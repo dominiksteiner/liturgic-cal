@@ -7,6 +7,8 @@ FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 # Install yarn
 RUN apt-get update -qq && apt-get install -y yarn
 
+RUN yarn --version
+
 # Rails app lives here
 WORKDIR /rails
 
