@@ -4,6 +4,10 @@
 ARG RUBY_VERSION=3.2.1
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
+# Install nodejs on the default ruby 3 image
+RUN curl -sL https://deb.nodesource.com/setup_21.x | bash - && \
+      apt-get install -y nodejs build-essential yarn
+
 # Rails app lives here
 WORKDIR /rails
 
