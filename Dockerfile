@@ -4,10 +4,15 @@
 ARG RUBY_VERSION=3.2.1
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
-# Install yarn
-RUN apt-get update -qq && apt-get install -y yarn
+# Install node and yarn
+RUN apt update
+RUN apt install -q -y curl
 
-RUN yarn --version
+RUN curl -sL "https://deb.nodesource.com/setup_21.x" | bash -
+RUN apt update
+RUN apt -q -y install nodejs
+
+RUN npm install -g yarn
 
 # Rails app lives here
 WORKDIR /rails
