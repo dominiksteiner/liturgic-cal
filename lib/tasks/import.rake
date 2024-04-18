@@ -3,9 +3,7 @@ namespace :import do
   task media: :environment do
     start_date = Date.parse(ENV['start_date'])
     end_date = Date.parse(ENV['end_date'])
-    start_date.upto(end_date) do |date|
-      Medium.sync(date)
-    end
+    Medium.sync(start_date, end_date)
   end
 
 end

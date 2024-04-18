@@ -19,13 +19,13 @@ const App = () => {
         setDate(date)
     }
 
-    
+
     return (
         <div>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar onChange={onDateChange} />
             </LocalizationProvider>
-            {media.map((medium) => <div>{medium.title}</div>)}
+            {media.map((medium) => <div><a target="_blank" href={medium.url}>{medium.title}</a></div>)}
         </div>
     );
 };
